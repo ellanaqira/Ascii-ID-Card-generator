@@ -12,15 +12,15 @@ int main()
     char city[100];
     char hobby[100];
     char line[] = "____________________________________________________________________";
-    char big_line[] = "+===================+";
+    char big_line[] = "+=========================+";
     char space = ' ';
 
     int default_length = 28;
     int spc_length;
     char spc_multiply[100];
 
-    printf("%s\n|______WELCOME______|\n", big_line);
-	printf("| Id card generator |\n%s\n\n", big_line);
+    printf("%s\n|________WELCOME_TO_______|\n", big_line);
+	printf("| Ascii ID Card Generator |\n%s\n\n", big_line);
 
     printf("  ______________\n");	
 	printf(" /o\\ Quick tips!\\______________________________________________________________________\n");
