@@ -1,6 +1,18 @@
 #include <stdio.h>
 #include <string.h>
 
+// space length for empty row
+#define DEFAULT_LENGTH 28
+
+int get_space_length(char length[])
+{
+    // Remaining length
+    int remain_length;
+    remain_length = DEFAULT_LENGTH-strlen(length);
+    return remain_length;
+}
+
+// main function
 int main()
 {
     char full_name[100];
@@ -14,9 +26,6 @@ int main()
     char line[] = "____________________________________________________________________";
     char big_line[] = "+=========================+";
     char space = ' ';
-
-    int default_length = 28;
-    int spc_length;
     char spc_multiply[100];
 
     printf("%s\n|________WELCOME_TO_______|\n", big_line);
@@ -64,58 +73,50 @@ int main()
     printf("|       _______       |                                              |\n");
     printf("|    ,###########,    |");
     printf("===(ID CARD)==================================|\n");
-
     printf("|  ,#*''\\\\\\\\\\\\\\\\'*#,  |                                              |\n");
+
+    // full name line
     printf("|  ###    '\\\\\\\\\\\\\\##  |");
-    spc_length = ("%zu\n", default_length-strlen(full_name));
-    for ( size_t u = 0; u < spc_length; ++u )
+    for ( int u = 0; u < get_space_length(full_name); ++u )
         spc_multiply[u] = space;
-    spc_multiply[spc_length] = '\0';
+    spc_multiply[get_space_length(full_name)] = '\0';
     printf("  Full Name     : %s%s|\n", full_name, spc_multiply);
 
-
+    // nick name line
     printf("|  ##'        ''\\\\##  |");
-    spc_length = ("%zu\n", default_length-strlen(nickname));
-    for ( size_t u = 0; u < spc_length; ++u )
+    for ( int u = 0; u < get_space_length(nickname); ++u )
         spc_multiply[u] = space;
-    spc_multiply[spc_length] = '\0';
+    spc_multiply[get_space_length(nickname)] = '\0';
     printf("  Nickname      : %s%s|\n", nickname, spc_multiply);
 
-
+    // date of birth line
     printf("| |#: /~~~' '~~~\\ :#| |");
-    int date_l, month_l, year_l, combine_l;
-    date_l = ("%zu\n", strlen(date));
-    month_l = ("%zu\n", strlen(month));
-    year_l = ("%zu\n", strlen(year));
-    combine_l = (date_l+month_l+year_l+2);
-    spc_length = (default_length-combine_l);
-    for ( size_t u = 0; u < spc_length; ++u )
+    strcat(date, month);
+    strcat(date, year);
+    for ( int u = 0; u < get_space_length(date); ++u )
         spc_multiply[u] = space;
-    spc_multiply[spc_length] = '\0';
+    spc_multiply[get_space_length(date)] = '\0';
     printf("  Date of birth : %s/%s/%s%s|\n", date, month, year, spc_multiply);
 
-
+    // country line
     printf("| :(|  <o> | <o>  |): |");
-    spc_length = ("%zu\n", default_length-strlen(country));
-    for ( size_t u = 0; u < spc_length; ++u )
+    for ( int u = 0; u < get_space_length(country); ++u )
         spc_multiply[u] = space;
-    spc_multiply[spc_length] = '\0';
+    spc_multiply[get_space_length(country)] = '\0';
     printf("  Country       : %s%s|\n", country, spc_multiply);
 
-
+    // city line
     printf("| ;#|     / \\     |#; |");
-    spc_length = ("%zu\n", default_length-strlen(city));
-    for ( size_t u = 0; u < spc_length; ++u )
+    for ( int u = 0; u < get_space_length(city); ++u )
         spc_multiply[u] = space;
-    spc_multiply[spc_length] = '\0';
+    spc_multiply[get_space_length(city)] = '\0';
     printf("  City          : %s%s|\n", city, spc_multiply);
 
-
+    // hobby line
     printf("|  #|    (. .)    |#  |");
-    spc_length = ("%zu\n", default_length-strlen(hobby));
-    for ( size_t u = 0; u < spc_length; ++u )
+    for ( int u = 0; u < get_space_length(hobby); ++u )
         spc_multiply[u] = space;
-    spc_multiply[spc_length] = '\0';
+    spc_multiply[get_space_length(hobby)] = '\0';
     printf("  Hobby         : %s%s|\n", hobby, spc_multiply);
 
 
@@ -126,5 +127,4 @@ int main()
     printf("|      '._____.'      |                                              |\n");
     printf("|_____________________|                                              |\n");
     printf("|%s|\n\n", line);
-
 }
