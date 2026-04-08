@@ -4,12 +4,22 @@
 // space length for empty row
 #define DEFAULT_LENGTH 28
 
+// get remain space length
 int get_space_length(char length[])
 {
     // Remaining length
     int remain_length;
     remain_length = DEFAULT_LENGTH-strlen(length);
     return remain_length;
+}
+
+// ask data from user function
+int ask_data(char message[], char data_var[])
+{
+    printf("%s > ", message);
+    fgets(data_var, 100, stdin);
+    // remove new line from fgets
+    data_var[strcspn(data_var, "\n")] = '\0';
 }
 
 // main function
@@ -35,40 +45,24 @@ int main()
 	printf(" /o\\ Quick tips!\\______________________________________________________________________\n");
 	printf("/_|_\\Use capital letters at the beginning of the input, so that the results are neater.|\n");
 
-    printf("\n1. Enter your full name > ");
-    fgets(full_name, 100, stdin);
-    full_name[strcspn(full_name, "\n")] = '\0';
-
-    printf("2. Enter your Nickname > ");
-    fgets(nickname, 100, stdin);
-    nickname[strcspn(nickname, "\n")] = '\0';
-
-    printf("3. Enter your date of birth > ");
-    fgets(date, 10, stdin);
-    date[strcspn(date, "\n")] = '\0';
-
-    printf("4. Enter your month of birth > ");
-    fgets(month, 10, stdin);
-    month[strcspn(month, "\n")] = '\0';
-
-    printf("5. Enter your year of birth > ");
-    fgets(year, 10, stdin);
-    year[strcspn(year, "\n")] = '\0';
-
-    printf("6. Enter your country > ");
-    fgets(country, 100, stdin);
-    country[strcspn(country, "\n")] = '\0';
-
-    printf("7. Enter your city > ");
-    fgets(city, 100, stdin);
-    city[strcspn(city, "\n")] = '\0';
-
-    printf("8. Enter your hobby > ");
-    fgets(hobby, 100, stdin);
-    hobby[strcspn(hobby, "\n")] = '\0';
+    // full name input
+    ask_data("1. Enter your full name", full_name);
+    // nickname input
+    ask_data("2. Enter your Nickname", nickname);
+    // date birth input
+    ask_data("3. Enter your date of birth", date);
+    // month birth input
+    ask_data("4. Enter your month of birth", month);
+    // year birth input
+    ask_data("5. Enter your year of birth", year);
+    // country input
+    ask_data("6. Enter your country", country);
+    // city input
+    ask_data("7. Enter your city", city);
+    // hobby input
+    ask_data("8. Enter your hobby", hobby);
 
     printf("\n\nGenerate your id card...\n\n");
-
     printf(" %s\n", line);
     printf("|       _______       |                                              |\n");
     printf("|    ,###########,    |");
