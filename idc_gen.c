@@ -64,10 +64,10 @@ int main()
 
     printf("\n\nGenerate your id card...\n\n");
     printf(" %s\n", line);
-    printf("|       _______       |                                              |\n");
+    printf("|       _______       |----------------------------------------------|\n");
     printf("|    ,###########,    |");
-    printf("===(ID CARD)==================================|\n");
-    printf("|  ,#*''\\\\\\\\\\\\\\\\'*#,  |                                              |\n");
+    printf("===(ID CARD)==================================|\n");                         
+    printf("|  ,#*''\\\\\\\\\\\\\\\\'*#,  |----------------------------------------------|\n");
 
     // full name line
     printf("|  ###    '\\\\\\\\\\\\\\##  |");
@@ -90,7 +90,7 @@ int main()
     for ( int u = 0; u < get_space_length(date); ++u )
         spc_multiply[u] = space;
     spc_multiply[get_space_length(date)] = '\0';
-    printf("  Date of birth : %s/%s/%s%s|\n", date, month, year, spc_multiply);
+    printf("  Date of birth : %s%s|\n", date, spc_multiply);
 
     // country line
     printf("| :(|  <o> | <o>  |): |");
