@@ -43,24 +43,24 @@ int main()
 
     printf("  ______________\n");	
 	printf(" /o\\ Quick tips!\\______________________________________________________________________\n");
-	printf("/_|_\\Use capital letters at the beginning of the input, so that the results are neater.|\n");
+	printf("/_|_\\Use capital letters at the beginning of the input, so that the results are neater.|\n\n");
 
     // full name input
-    ask_data("1. Enter your full name", full_name);
+    ask_data("1. Enter your full name     ", full_name);
     // nickname input
-    ask_data("2. Enter your Nickname", nickname);
+    ask_data("2. Enter your Nickname      ", nickname);
     // date birth input
-    ask_data("3. Enter your date of birth", date);
+    ask_data("3. Enter your date of birth ", date);
     // month birth input
     ask_data("4. Enter your month of birth", month);
     // year birth input
-    ask_data("5. Enter your year of birth", year);
+    ask_data("5. Enter your year of birth ", year);
     // country input
-    ask_data("6. Enter your country", country);
+    ask_data("6. Enter your country       ", country);
     // city input
-    ask_data("7. Enter your city", city);
+    ask_data("7. Enter your city          ", city);
     // hobby input
-    ask_data("8. Enter your hobby", hobby);
+    ask_data("8. Enter your hobby         ", hobby);
 
     printf("\n\nGenerate your id card...\n\n");
     printf(" %s\n", line);
@@ -85,12 +85,18 @@ int main()
 
     // date of birth line
     printf("| |#: /~~~' '~~~\\ :#| |");
-    strcat(date, month);
-    strcat(date, year);
-    for ( int u = 0; u < get_space_length(date); ++u )
+    // define variables to store the length of date, month, year, and combine that store full date
+    int date_l, month_l, year_l, combine_l;
+    date_l = ("%zu\n", strlen(date));
+    month_l = ("%zu\n", strlen(month));
+    year_l = ("%zu\n", strlen(year));
+    combine_l = (date_l+month_l+year_l+2);
+    int spc_length;
+    spc_length = (DEFAULT_LENGTH-combine_l);
+    for ( size_t u = 0; u < spc_length; ++u )
         spc_multiply[u] = space;
-    spc_multiply[get_space_length(date)] = '\0';
-    printf("  Date of birth : %s%s|\n", date, spc_multiply);
+    spc_multiply[spc_length] = '\0';
+    printf("  Date of birth : %s/%s/%s%s|\n", date, month, year, spc_multiply);
 
     // country line
     printf("| :(|  <o> | <o>  |): |");
@@ -112,7 +118,6 @@ int main()
         spc_multiply[u] = space;
     spc_multiply[get_space_length(hobby)] = '\0';
     printf("  Hobby         : %s%s|\n", hobby, spc_multiply);
-
 
     printf("|   \\\\   _____   //   |                                              |\n");
     printf("|    '\\   ---   /'    |                                              |\n");
